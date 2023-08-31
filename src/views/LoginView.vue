@@ -12,7 +12,7 @@
     })
 
 </script>
-
+ 
 <template>
     <v-card flat max-width="600" class="mx-auto my-2">
 
