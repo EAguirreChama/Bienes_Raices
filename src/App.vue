@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -11,13 +11,20 @@ import { RouterLink, RouterView } from 'vue-router'
     <v-layout>
       <v-app-bar
          color="blue-darken-1"
-      >
-        <template v-slot:append>
-          
-        </template>
-        <template v-slot:prepend>
-          
-        </template>
+         >
+          <template v-slot:prepend>
+            <v-btn :to="{name: 'home'}">
+              Bienes Raices
+            </v-btn>
+          </template>
+          <template v-slot:append>
+            <v-btn :to="{name: 'home'}">
+              Inicio
+            </v-btn>
+            <v-btn :to="{name: 'login'}">
+              Iniciar Sesión
+            </v-btn>
+          </template>
       </v-app-bar>
 
       <v-main>
@@ -25,7 +32,7 @@ import { RouterLink, RouterView } from 'vue-router'
           <RouterView/>
         </v-container>
       </v-main>
-      
+
     </v-layout>
   </v-card>
 </template>
