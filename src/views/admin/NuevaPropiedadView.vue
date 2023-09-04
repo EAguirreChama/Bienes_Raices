@@ -1,5 +1,14 @@
 <script setup>
+    import { useForm, useField } from 'vee-validate'
+
+    const { handleSubmit } = useForm()
+
     const items = [1,2,3,4,5]
+
+    const submit = handleSubmit((valuees) => {
+
+    })
+
 </script>
 
 <template>
@@ -37,7 +46,7 @@
             
             <v-checkbox label="Alberca"/>
 
-            <v-btn color="pink-accent-3" block>
+            <v-btn color="pink-accent-3" block @click="submit">
                 Agregar Propiedad
             </v-btn>
         </v-form>
