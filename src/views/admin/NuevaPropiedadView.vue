@@ -1,7 +1,13 @@
 <script setup>
     import { useForm, useField } from 'vee-validate'
+    import { validationSchema, imageSchema } from '../../validation/propiedadSchema'
 
-    const { handleSubmit } = useForm()
+    const { handleSubmit } = useForm({
+        validationSchema : {
+            ...validationSchema,
+            ...imageSchema
+        }
+    })
 
     const items = [1,2,3,4,5]
 
