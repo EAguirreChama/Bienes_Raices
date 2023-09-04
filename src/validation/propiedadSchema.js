@@ -1,7 +1,7 @@
 export const validationSchema = {
     titulo (value) {
       if (value?.length >= 6 ) return true
-      return 'El titulo de la propiedad es obligatorio o muy corto'
+      return 'El titulo de la propiedad es obligatorio o es muy corto'
     },
     precio (value) {
       /*
@@ -16,7 +16,7 @@ export const validationSchema = {
       if (value) return true
       return 'Selecciona una Cantidad'
     },
-    wc (value) {
+    baños (value) {
       if (value) return true
       return 'Selecciona una Cantidad'
     },
@@ -33,6 +33,6 @@ export const validationSchema = {
 export const imageSchema = {
   imagen (value) {
       if (value) return true
-      return 'La Imagen es Obligatoria'
+      return 'Una fotografía es obligatoria'
   },
 }

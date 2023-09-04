@@ -2,6 +2,8 @@
     import { useForm, useField } from 'vee-validate'
     import { validationSchema, imageSchema } from '../../validation/propiedadSchema'
 
+    const items = [1,2,3,4,5]
+
     const { handleSubmit } = useForm({
         validationSchema : {
             ...validationSchema,
@@ -9,9 +11,15 @@
         }
     })
 
-    const items = [1,2,3,4,5]
+    const titulo = useField('titulo')
+    const imagen = useField('imagen')
+    const precio = useField('precio')
+    const habitaciones = useField('habitaciones')
+    const baños = useField('baños')
+    const estacionamiento = useField('estacionamiento')
+    const descripcion = useField('descripcion')
 
-    const submit = handleSubmit((valuees) => {
+    const submit = handleSubmit((values) => {
 
     })
 
@@ -28,9 +36,9 @@
         </v-card-subtitle>
 
         <v-form class="mt-5">
-            <v-text-field class="mb-2" label="Titulo Propiedad"/>
+            <v-text-field class="mb-2" label="Titulo Propiedad" v-model="titulo.value.value" :error-messages="titulo.errorMessage.value"/>
 
-            <v-file-input accept="image/jpeg" label="Fotografía" prepend-icon="mdi-camera" class="mb-5"/>
+            <v-file-input accept="image/jpeg" label="Fotografía" prepend-icon="mdi-camera" class="mb-5" v-model="imagen.value.value" :error-messages="imagen.errorMessage.value"/>
 
             <v-text-field class="mb-2" label="Precio"/>
 
