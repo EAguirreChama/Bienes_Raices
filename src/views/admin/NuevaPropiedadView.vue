@@ -44,7 +44,7 @@
 
             <v-row>
                 <v-col cols="12" md="4">
-                    <v-select label="Habitaciones" class="mb-5" :items="items"/>
+                    <v-select label="Habitaciones" class="mb-5" :items="items" v-model="habitaciones.value.value" :error-messages="habitaciones.errorMessage.value"/>
                 </v-col>
 
                 <v-col cols="12" md="4">
