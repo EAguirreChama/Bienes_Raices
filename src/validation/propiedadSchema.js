@@ -14,15 +14,15 @@ export const validationSchema = {
     },
     habitaciones (value) {
       if (value) return true
-      return 'Selecciona una Cantidad'
+      return 'Selecciona una cantidad de habitaciones'
     },
     baños (value) {
       if (value) return true
-      return 'Selecciona una Cantidad'
+      return 'Selecciona una cantidad de baños'
     },
     estacionamiento (value) {
       if (value) return true
-      return 'Selecciona una Cantidad'
+      return 'Selecciona la cantidad de estacionamientos'
     },
     descripcion (value) {
       if (value) return true

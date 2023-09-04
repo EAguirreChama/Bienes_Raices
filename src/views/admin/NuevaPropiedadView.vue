@@ -48,15 +48,15 @@
                 </v-col>
 
                 <v-col cols="12" md="4">
-                    <v-select label="Baños" class="mb-5" :items="items"/>
+                    <v-select label="Baños" class="mb-5" :items="items" v-model="baños.value.value" :error-messages="baños.errorMessage.value"/>
                 </v-col>
 
                 <v-col cols="12" md="4" >
-                    <v-select label="Estacionamiento" class="mb-5" :items="items"/>
+                    <v-select label="Estacionamiento" class="mb-5" :items="items" v-model="estacionamiento.value.value" :error-messages="estacionamiento.errorMessage.value"/>
                 </v-col>
             </v-row>
             
-            <v-textarea class="mb-5" label="Descripción"/>
+            <v-textarea class="mb-5" label="Descripción" v-model="descripcion.value.value" :error-messages="descripcion.errorMessage.value"/>
             
             <v-checkbox label="Alberca"/>
 
