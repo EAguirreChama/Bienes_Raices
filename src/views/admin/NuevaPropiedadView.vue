@@ -40,7 +40,7 @@
 
             <v-file-input accept="image/jpeg" label="Fotografía" prepend-icon="mdi-camera" class="mb-5" v-model="imagen.value.value" :error-messages="imagen.errorMessage.value"/>
 
-            <v-text-field class="mb-2" label="Precio"/>
+            <v-text-field class="mb-2" label="Precio" v-model="precio.value.value" :error-messages="precio.errorMessage.value"/>
 
             <v-row>
                 <v-col cols="12" md="4">

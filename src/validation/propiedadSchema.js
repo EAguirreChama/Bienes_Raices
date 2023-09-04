@@ -10,7 +10,7 @@ export const validationSchema = {
           $ - Representa el final de la cadena.
       */
       if (/^[0-9]+$/.test(value)) return true
-      return 'El Precio solo deben ser números'
+      return 'Debes colocar un precio que solo sean números'
     },
     habitaciones (value) {
       if (value) return true
