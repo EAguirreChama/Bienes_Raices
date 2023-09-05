@@ -1,6 +1,7 @@
 import { ref as storageRef } from 'firebase/storage'
 import { useFirebaseStorage, useStorageFile } from 'vuefire'
 import { uid } from 'uid'
+import { computed } from 'vue'
 
 export default function useImage() {
     const storage = useFirebaseStorage()
@@ -18,7 +19,13 @@ export default function useImage() {
         }
     }
 
+    const image = computed(() => {
+        return url.value ? url.value : null
+    })
+
     return {
         uploadImage,
+        image,
+        url
     }
 }
