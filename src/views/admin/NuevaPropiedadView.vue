@@ -1,19 +1,19 @@
 <script setup>
-    import { ref } from 'vue'
     import { useForm, useField } from 'vee-validate'
     import { validationSchema, imageSchema } from '../../validation/propiedadSchema'
     import { collection, addDoc} from 'firebase/firestore'
     import { useFirestore } from 'vuefire'
     import { useRouter } from 'vue-router'
     import useImage from '../../composables/useImage'
+    import useLocationMap from '../../composables/useLocationMap'
     import "leaflet/dist/leaflet.css"
-    import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
+    import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
 
-    const zoom = ref(15)
 
     const items = [1,2,3,4,5]
 
     const { uploadImage, image, url } = useImage()
+    const { zoom, center } = useLocationMap()
 
     const router = useRouter()
     const db = useFirestore()
@@ -91,14 +91,24 @@
             
             <v-checkbox label="Alberca" v-model="alberca.value.value" :error-messages="alberca.errorMessage.value"/>
 
-            <div style="height: 600px; width: 800px;">
-                <LMap ref="map" v-model:zoom="zoom" :center="[47.41332, -1.219482]" :use-global-leaflet="false">
-                    <LTileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        layer-type="base"
-                        name="OpenStreetMap"
-                    ></LTileLayer>
-                </LMap>
+            <h2 class="font-weight-bold text-center my-5">Ubicación</h2>
+
+            <div class="pb-10">
+                <div style="height: 600px">
+                    <LMap 
+                        v-model:zoom="zoom" 
+                        :center="center" 
+                        :use-global-leaflet="false"
+                    >
+                        <LMarker
+                            :lat-lng="center"
+                            draggable
+                        />
+                        <LTileLayer
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        ></LTileLayer>
+                    </LMap>
+                </div>
             </div>
 
             <v-btn color="pink-accent-3" block @click="submit">
