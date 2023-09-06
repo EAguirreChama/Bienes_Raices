@@ -1,10 +1,15 @@
 <script setup>
+    import { ref } from 'vue'
     import { useForm, useField } from 'vee-validate'
     import { validationSchema, imageSchema } from '../../validation/propiedadSchema'
     import { collection, addDoc} from 'firebase/firestore'
     import { useFirestore } from 'vuefire'
     import { useRouter } from 'vue-router'
     import useImage from '../../composables/useImage'
+    import "leaflet/dist/leaflet.css"
+    import { LMap, LTileLayer } from '@vue-leaflet/vue-leaflet'
+
+    const zoom = ref(15)
 
     const items = [1,2,3,4,5]
 
@@ -85,6 +90,16 @@
             <v-textarea class="mb-5" label="Descripción" v-model="descripcion.value.value" :error-messages="descripcion.errorMessage.value"/>
             
             <v-checkbox label="Alberca" v-model="alberca.value.value" :error-messages="alberca.errorMessage.value"/>
+
+            <div style="height: 600px; width: 800px;">
+                <LMap ref="map" v-model:zoom="zoom" :center="[47.41332, -1.219482]" :use-global-leaflet="false">
+                    <LTileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        layer-type="base"
+                        name="OpenStreetMap"
+                    ></LTileLayer>
+                </LMap>
+            </div>
 
             <v-btn color="pink-accent-3" block @click="submit">
                 Agregar Propiedad
