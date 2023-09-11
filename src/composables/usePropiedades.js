@@ -14,9 +14,8 @@ export default function usePropiedades() {
                 currency: 'USD'
             })
     })
-
     return {
         propiedadesCollection,
         propertyPrice,
-    }
-}
+    };
+};
