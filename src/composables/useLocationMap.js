@@ -9,10 +9,9 @@ export default function useLocationMap() {
         const marker = e.target.getLatLng()
         center.value = [marker.lat, marker.lng]
     }
-
     return {
         zoom,
         center,
         pin,
-    }
-}
+    };
+};
