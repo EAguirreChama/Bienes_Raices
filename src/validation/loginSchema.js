@@ -13,5 +13,5 @@ export const loginSchema = {
     password(value) {
         if (value) return true
         return 'El Password es obligatorio'
-    }
-}
+    };
+};
