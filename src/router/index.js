@@ -65,7 +65,6 @@ router.beforeEach(async (to, from, next) => {
 
 function authenticateUser() {
   const auth = useFirebaseAuth()
-
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       unsubscribe()
@@ -77,5 +76,4 @@ function authenticateUser() {
     })
   })
 }
-
 export default router
