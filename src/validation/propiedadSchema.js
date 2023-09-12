@@ -28,11 +28,11 @@ export const validationSchema = {
       if (value) return true
       return 'Agrega una Descripción'
     }
-} 
+};
   
 export const imageSchema = {
   imagen (value) {
       if (value) return true
       return 'Una fotografía es obligatoria'
   },
-}
+};
