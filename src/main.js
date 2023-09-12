@@ -1,6 +1,5 @@
 import './assets/main.css'
 import '@mdi/font/css/materialdesignicons.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -18,13 +17,11 @@ import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
-
 // Vuetify
 const vuetify = createVuetify({
     components,
     directives
 })
-
 // Firebase
 app.use(VueFire, {
     firebaseApp,
