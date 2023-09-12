@@ -1,6 +1,6 @@
 <script setup>
     import { watch } from 'vue'
-    import { useRoute } from 'vue-router'
+    import { useRoute, useRouter } from 'vue-router'
     import { useFirestore, useDocument } from 'vuefire'
     // UpdateDoc sirve para actualizar un registro en nuestra base de datos
     import { doc, updateDoc } from 'firebase/firestore'
@@ -32,6 +32,7 @@
     const alberca = useField('alberca')
 
     const route = useRoute()
+    const router = useRouter()
 
     // Obtener la Propiedad a editar
     const db = useFirestore()
@@ -49,8 +50,18 @@
         center.value = propiedad.ubicacion
     })
 
-    const submit = handleSubmit( values => {
+    const submit = handleSubmit( async values => {
+        const { imagen, ...propiedad } = values 
+        if(image.value) {
 
+        } else {
+            const data = {
+                ...propiedad, 
+                ubicacion: center.value
+            }
+            await updateDoc(docRef, data)
+        }
+        router.push({ name: 'admin-propiedades' })
     })
 
 </script>
