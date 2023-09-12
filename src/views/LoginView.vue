@@ -12,7 +12,6 @@
     const submit = handleSubmit((values) => {
         auth.login(values)
     })
-
 </script>
  
 <template>
@@ -34,6 +33,7 @@
         ></v-alert>
 
         <v-form class="mt-5">
+            
             <v-text-field
                 type="email"
                 label="Email"
@@ -50,13 +50,11 @@
                 v-model="password.value.value"
                 :error-messages="password.errorMessage.value"
             />
-            <v-btn
-                block
-                color="pink-accent-3"
-                @click="submit"
-            >
+            
+            <v-btn block color="pink-accent-3" @click="submit">
                 Iniciar Sesión
             </v-btn>
+            
         </v-form>
 
     </v-card>
