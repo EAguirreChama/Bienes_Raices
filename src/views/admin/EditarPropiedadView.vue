@@ -1,4 +1,5 @@
 <script setup>
+    import { watch } from 'vue'
     import { useRoute } from 'vue-router'
     import { useFirestore, useDocument } from 'vuefire'
     // UpdateDoc sirve para actualizar un registro en nuestra base de datos
@@ -25,7 +26,7 @@
     const imagen = useField('imagen')
     const precio = useField('precio')
     const habitaciones = useField('habitaciones')
-    const wc = useField('wc')
+    const baños = useField('baños')
     const estacionamiento = useField('estacionamiento')
     const descripcion = useField('descripcion')
     const alberca = useField('alberca')
@@ -36,8 +37,20 @@
     const db = useFirestore()
     const docRef = doc(db, 'propiedades', route.params.id)
     const propiedad = useDocument(docRef)
+
+    watch(propiedad, (propiedad) => {
+        titulo.value.value = propiedad.titulo
+        precio.value.value = propiedad.precio
+        habitaciones.value.value = propiedad.habitaciones
+        baños.value.value = propiedad.baños
+        estacionamiento.value.value = propiedad.estacionamiento
+        descripcion.value.value = propiedad.descripcion
+        alberca.value.value = propiedad.alberca
+        center.value = propiedad.ubicacion
+    })
+
     const submit = handleSubmit( values => {
-        
+
     })
 
 </script>
@@ -99,11 +112,11 @@
                         md="4"
                     >
                         <v-select 
-                            label="WC"
+                            label="Baños"
                             class="mb-5"
                             :items="items"
-                            v-model="wc.value.value"
-                            :error-messages="wc.errorMessage.value"
+                            v-model="baños.value.value"
+                            :error-messages="baños.errorMessage.value"
                         />
                     </v-col>
 
