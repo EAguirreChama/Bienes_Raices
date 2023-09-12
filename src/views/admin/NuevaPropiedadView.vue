@@ -9,7 +9,6 @@
     import "leaflet/dist/leaflet.css"
     import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet'
 
-
     const items = [1,2,3,4,5]
 
     const { uploadImage, image, url } = useImage()
@@ -39,7 +38,6 @@
     const submit = handleSubmit(async (values) => {
 
         const { imagen, ...propiedad } = values
-
         const docRef = await addDoc(collection(db, "propiedades"), {
             ...propiedad,
             imagen: url.value,
@@ -49,7 +47,6 @@
             router.push({name : 'admin-propiedades'})
         }
     })
-
 </script>
 
 <template>
@@ -116,6 +113,7 @@
             <v-btn color="pink-accent-3" block @click="submit">
                 Agregar Propiedad
             </v-btn>
+            
         </v-form>
     </v-card>
 </template>
