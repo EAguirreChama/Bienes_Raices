@@ -1,6 +1,5 @@
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
-
 import { defineStore } from "pinia";
 import { useFirebaseAuth } from 'vuefire'
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth'
@@ -15,7 +14,7 @@ export const useAuthStore = defineStore('auth', () => {
     const errorCodes = {
         'auth/user-not-found' : 'Usuario no encontrado',
         'auth/wrong-password' : 'El password es incorrecto'
-    }
+    };
 
     onMounted(() => {
         onAuthStateChanged(auth, (user) => {
@@ -35,7 +34,7 @@ export const useAuthStore = defineStore('auth', () => {
             .catch ( error => {
                 errorMsg.value = errorCodes[error.code]
             })
-    }
+    };
 
     const logout = () => {
         signOut(auth)
@@ -46,7 +45,7 @@ export const useAuthStore = defineStore('auth', () => {
             .catch( error => {
                 console.log(error)
             })
-    }
+    };
 
     const hasError = computed(() => {
         return errorMsg.value
