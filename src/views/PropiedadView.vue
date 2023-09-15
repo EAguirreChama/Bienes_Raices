@@ -61,7 +61,7 @@
                             :lat-lng="center"
                         >
                             <LPopup>
-                                {{ propiedad.titulo }}
+                                {{ propiedad?.titulo }}
                             </LPopup>
                         </LMarker>
                         <LTileLayer
